@@ -1,0 +1,278 @@
+@import "bourbon"
+@import "vars.sass"
+
+//Load Libs SASS
+@import "app/libs/animate/animate.sass"
+
+*::-webkit-input-placeholder
+	color: #666
+	opacity: 1
+
+*:-moz-placeholder
+	color: #666
+	opacity: 1
+
+*::-moz-placeholder
+	color: #666
+	opacity: 1
+
+*:-ms-input-placeholder
+	color: #666
+	opacity: 1
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+	color: $main-color
+body input:required:valid,
+body textarea:required:valid
+	color: $main-color
+img
+	-moz-user-select: none 
+	-webkit-user-select: none 
+	-ms-user-select: none
+	user-select: none
+ul
+	margin: 0
+	padding: 0
+	li
+		list-style-type: none
+
+
+//Custom Styles Here
+
+.button
+	background-color: $main-color
+	border: 3px solid #fff
+	transition: all ease .2s
+	border-radius: 10px
+	padding: 5px 15px
+	&:hover
+		background-color: lighten($main-color, 38%)
+		color: $main-color
+		border: 3px solid $main-color
+		cursor: pointer
+
+
+.header-information-button
+	background-color: $main-color
+	color: #fff
+	font-size: 30px
+	border: 3px solid #fff
+	width: 40px
+	height: 40px
+	transition: all ease .2s
+	&:hover
+		color: $main-color
+		border-color: darken($main-color, 5%)
+		background-color: #FFF
+
+.main-list
+	li
+		font-size: em(19px)
+		transition: all ease .15s
+		border-bottom: 1px solid darken($main-color, 8%)
+		background-color: darken($main-color, 5%)
+		&:first-child
+			border-top: 1px solid darken($main-color, 8%)
+		.main-list-content
+			padding: 15px
+		&:hover
+			cursor: pointer
+			// background-color: lighten($main-color, 38%)
+			// color: darken($main-color, 5%)
+
+		
+				
+
+
+
+.column
+	opacity: .9
+	box-shadow: 10px 10px 27px -5px darken($main-color, 15%)
+	background-color: darken($main-color, 5%)
+	padding-bottom: 30px
+	background-color: $main-color
+	border: 3px solid darken($main-color, 5%)
+	border-top: none
+	border-radius: 0px 0px 30px 30px
+	.header-information
+		padding: 10px
+		display: flex
+		justify-content: space-between
+		align-items: center
+		h2
+			margin: 0
+		.fa
+			position: relative
+			top: -9px
+			left: 0px
+			font-size: 24px
+
+.main-list-content
+	line-height: 2em
+	.small-dscr
+		position: relative
+		display: flex
+		justify-content: space-between
+		text-transform: uppercase
+		img
+			width: 40px
+			height: 40px
+			border-radius: 50%
+			transition: all ease .2s
+			&:hover
+				transform: scale(1.2)
+		.fa	
+			right: 150px
+			top: 5px
+			position: absolute
+			opacity: .2
+			font-size: 30px
+			align-self: center
+		.fa
+			&.checked
+				opacity: 1
+		.in-team
+			position: absolute
+			right: 85px
+			top: 0
+
+
+			
+	.small-dscr-team
+		flex-direction: row-reverse
+		text-transform: uppercase
+
+	.extra-information
+		line-height: 1.6em
+		border-radius: 10px
+		margin-top: 10px
+		display: none
+		background-color: $main-color
+		background: linear-gradient(to bottom, rgba(82,168,156,1) 0%, rgba(93,176,164,1) 76%, rgba(97,178,167,1) 100%)
+		color: #fff
+		padding: 10px 10px
+		font-size: em(13px)
+		.status
+			display: block
+		.give-task-student
+			margin-top: 5px
+	.extra-information-team
+		span
+			display: block
+			margin-bottom: 5px
+		.add-student-complete
+			margin-left: 10px
+		.line-up-list
+			margin-top: 10px
+			margin-bottom: 10px
+			.line-up-list-element
+				margin-bottom: 1px
+				background-color: #FFF
+				color: $main-color
+				border-radius: 10px
+				padding: 10px
+				span
+					display: inline
+				.dscr-student
+					text-decoration: underline
+		.number-of-students-in-team
+			span
+				display: inline
+
+
+
+
+
+	
+.column-team
+	z-index: 2
+	.header-information
+		flex-direction: row-reverse
+	
+.section-form
+	@extend .column
+	h2
+		padding: 10px 20px
+		border-bottom: 3px solid darken($main-color, 5%)
+		background-color: $main-color
+		margin: 0
+	form
+		height: 260px
+		padding: 15px	
+		padding-bottom: 30px
+		
+
+		display: flex
+		flex-direction: column
+		flex-wrap: wrap
+		align-content: space-between
+		input
+			transition: all ease .2s
+			border: $main-color solid 3px
+			width: 45%
+			color: darken($main-color, 22%)
+			height: 45px
+			padding: 0 8px
+			border-radius: 10px
+		.form-submit
+			border: 5px solid #fff
+			height: 40px
+			color: #fff
+			cursor: pointer
+			&:hover
+				background-color: #FFF
+				color: darken($main-color, 5%)
+				border: 5px solid darken($main-color, 5%)
+		img
+			width: 85px
+			height: 85px
+			margin: auto auto
+			border-radius: 50%
+
+.section-form-team
+	display: none
+	form
+		img
+			width: 125px
+			height: 125px
+
+.form-wrapper
+	.form-submit-student
+		display: block
+		margin-top: 5px
+		
+
+// .prior-list
+// 	@extend .column
+// 	border-radius: 30px
+// 	border-top: 3px solid darken($main-color, 5%)	
+// 	h2
+// 		padding: 10px 20px
+// 		border-radius: 30px 30px 0px  0px
+// 		border-bottom: 3px solid darken($main-color, 5%)
+// 		background-color: $main-color
+// 		margin: 0	
+// 	table 
+// 		color: darken($main-color, 5%)
+// 		width: 100%
+// 		border-collapse: collapse
+// 		text-align: center
+// 		th, td 
+// 			border-style: solid
+// 			border-width: 0 1px 1px 0
+// 			border-color: darken($main-color, 5%)
+// 			background-color: #FFF
+// 		td
+// 			background: #fff
+		
+			
+		
+	  
+
+	
+
+//ALWAYS END
+@import "media"
+@import "app/libs/font-awesome/css/font-awesome"
+
