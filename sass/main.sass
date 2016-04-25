@@ -2,7 +2,7 @@
 @import "vars.sass"
 
 //Load Libs SASS
-@import "app/libs/animate/animate.sass"
+
 
 *::-webkit-input-placeholder
 	color: #666
@@ -243,28 +243,74 @@ ul
 		margin-top: 5px
 		
 
-// .prior-list
-// 	@extend .column
-// 	border-radius: 30px
-// 	border-top: 3px solid darken($main-color, 5%)	
-// 	h2
-// 		padding: 10px 20px
-// 		border-radius: 30px 30px 0px  0px
-// 		border-bottom: 3px solid darken($main-color, 5%)
-// 		background-color: $main-color
-// 		margin: 0	
-// 	table 
-// 		color: darken($main-color, 5%)
-// 		width: 100%
-// 		border-collapse: collapse
-// 		text-align: center
-// 		th, td 
-// 			border-style: solid
-// 			border-width: 0 1px 1px 0
-// 			border-color: darken($main-color, 5%)
-// 			background-color: #FFF
-// 		td
-// 			background: #fff
+.tasks
+	@extend .column
+	padding-bottom: 0
+	border-radius: 30px
+	margin-top: 30px
+	overflow: hidden
+	.tasks-headers 
+		display: flex
+		justify-content: space-between
+		h3
+			transition: all ease .2s
+			text-align: center
+			margin: 0
+			width: 50%
+			padding: 10px 15px
+			background-color: darken($main-color, 5%)	
+			&:hover
+				background-color: #fff
+				color: darken($main-color, 8%)
+				cursor: pointer
+			&.active
+				background-color: darken($main-color, 8%)	
+				&:hover
+					background-color: #fff
+					color: darken($main-color, 8%)
+
+	.task-list
+		li
+			border-bottom: 3px solid darken($main-color, 5%)
+			display: flex
+			justify-content: space-around
+			.task-dscr
+				user-select: none
+				flex: 2
+				h3
+					margin-left: 10px
+				p
+					margin-left: 10px
+				.fa
+					font-size: 16px	
+					&:hover
+						cursor: pointer
+			.task-performer
+				text-align: center
+				flex: 1
+				border-left: 3px solid darken($main-color, 5%)
+			&.no-tasks
+				padding: 10px 20px	
+				.fa	
+					position: relative
+					top: 4px
+					font-size: 30px
+
+.tasks-list-team
+	display: none
+
+.task-form
+	.input-dscr
+		display: block
+		margin-top: 5px
+	textarea
+		display: block
+		border-radius: 3px
+		background-color: lighten($main-color, 50%)
+	.task-form-submit
+		margin-top: 5px
+
+
 		
 			
 		

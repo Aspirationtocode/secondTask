@@ -59,17 +59,6 @@
 							<button class='header-information-button header-information-button-student'><i class="fa fa-minus"></i></button>
 						</div>
 						<ul class="main-list main-list-student">
-							<!-- <li class='list-item-student list-item'>
-								<div class='main-list-content-student main-list-content'>
-									<span class='small-dscr small-dscr-student'>Евгений, 18 лет <img src="${curStudent.photoURL}" alt=""></span>
-
-									<div class='extra-information extra-information-student'>
-										<span class='skills-student'><b>Умения:</b> Javascript, HTML, CSS3, SASS</span>
-										<span class='status-student status'><b>Статус:</b> Не в команде</span>
-										<button class='button give-task-student'>Дать задание</button>
-									</div>
-								</div>
-							</li> -->
 						</ul>
 					</div>
 				</div>
@@ -79,11 +68,11 @@
 						<h2>Добавить студента</h2>
 						<form class="form-student">						
 							<span class='input-dscr'>Имя:</span>
-							<input type="text" name='name-student' required>
+							<input type="text" name='name-student' maxlength="15" required>
 							<span class='input-dscr'>Возраст:</span>
-							<input type="text" name='age-student' required>
+							<input type="text" name='age-student' maxlength="3" required>
 							<span class='input-dscr'>Умения:</span>
-							<input type="text" name='skills-student' required>
+							<input type="text" name='skills-student'  maxlength="40" required>
 							<span class='input-dscr'>Загрузить URL фото:</span>
 							<input type="text" name='photo-student' value='https://pp.vk.me/c630717/v630717667/24477/De4_T9YQXn4.jpg' required>
 							<img src="https://i1.wp.com/salesforce-developer.ru/wp-content/uploads/avatars/no-avatar.jpg?ssl=1" alt="">
@@ -94,145 +83,27 @@
 						<h2>Добавить команду</h2>					
 						<form class="form-team">						
 							<span class='input-dscr'>Название команды</span>
-							<input type="text" name='name-team' required>
+							<input type="text" name='name-team'  maxlength="15" required>
 							<span class='input-dscr'>Девиз команды</span>
-							<input type="text" name='slogan-team' required>
+							<input type="text" name='slogan-team'  maxlength="50" required>
 							<span class='input-dscr'>Загрузить URL логотипа команды:</span>
 							<input type="text" name='photo-team'  value='http://deployd.com/img/bucket/javascript.png' required>
 							<img src="http://sonberry.ru.opt-images.1c-bitrix-cdn.ru/images/partneram.jpg?1387176962953112" alt="">
 							<input type="submit" value='Добавить команду' class='form-submit form-submit-team button'>
 						</form>
 					</section>
-					
-					<!-- <section class='prior-list'>
-						<h2>Приоритезированные списки студентов и менторов:</h2>
-						<h3>Мнение студентов:</h3>		
-						<table>
-							<tr>
-							  <th>*</th>
-							  <th>M1</th>
-							  <th>M2</th>
-							  <th>M3</th>
-							</tr>
-							<tr>
-							  <th>S1</th>
-							  <th>Q1</th>
-							  <th>Q2</th>
-							  <th>Q2</th>
-							</tr>
-							<tr>
-							  <th>S2</th>
-							  <th>Q1</th>
-							  <th>Q2</th>
-							  <th>Q2</th>
-							</tr>
-							<tr>
-							  <th>S3</th>
-							  <th>Q1</th>
-							  <th>Q2</th>
-							  <th>Q2</th>
-							</tr>
-							<tr>
-							  <th>S4</th>
-							  <th>Q1</th>
-							  <th>Q2</th>
-							  <th>Q2</th>
-							</tr>
-							<tr>
-							  <th>S5</th>
-							  <th>Q1</th>
-							  <th>Q2</th>
-							  <th>Q2</th>
-							</tr>
-							<tr>
-							  <th>S6</th>
-							  <th>Q1</th>
-							  <th>Q2</th>
-							  <th>Q2</th>
-							</tr>
-							<tr>
-							  <th>S7</th>
-							  <th>Q1</th>
-							  <th>Q2</th>
-							  <th>Q2</th>
-							</tr>
-							<tr>
-							  <th>S8</th>
-							  <th>Q1</th>
-							  <th>Q2</th>
-							  <th>Q2</th>
-							</tr>
-							<tr>
-							  <th>S9</th>
-							  <th>Q1</th>
-							  <th>Q2</th>
-							  <th>Q2</th>
-							</tr>
-						</table>
-						<h3>Мнение менторов:</h3>	
-						<table>
-							<tr>
-							  <th>*</th>
-							  <th>M1</th>
-							  <th>M2</th>
-							  <th>M3</th>
-							</tr>
-							<tr>
-							  <th>S1</th>
-							  <th>Q1</th>
-							  <th>Q2</th>
-							  <th>Q2</th>
-							</tr>
-							<tr>
-							  <th>S2</th>
-							  <th>Q1</th>
-							  <th>Q2</th>
-							  <th>Q2</th>
-							</tr>
-							<tr>
-							  <th>S3</th>
-							  <th>Q1</th>
-							  <th>Q2</th>
-							  <th>Q2</th>
-							</tr>
-							<tr>
-							  <th>S4</th>
-							  <th>Q1</th>
-							  <th>Q2</th>
-							  <th>Q2</th>
-							</tr>
-							<tr>
-							  <th>S5</th>
-							  <th>Q1</th>
-							  <th>Q2</th>
-							  <th>Q2</th>
-							</tr>
-							<tr>
-							  <th>S6</th>
-							  <th>Q1</th>
-							  <th>Q2</th>
-							  <th>Q2</th>
-							</tr>
-							<tr>
-							  <th>S7</th>
-							  <th>Q1</th>
-							  <th>Q2</th>
-							  <th>Q2</th>
-							</tr>
-							<tr>
-							  <th>S8</th>
-							  <th>Q1</th>
-							  <th>Q2</th>
-							  <th>Q2</th>
-							</tr>
-							<tr>
-							  <th>S9</th>
-							  <th>Q1</th>
-							  <th>Q2</th>
-							  <th>Q2</th>
-							</tr>
-						</table>
-					</section> -->
+					<section class="tasks">
+						<div class="tasks-headers">
+							<h3 class='tasks-header tasks-header-student active'>Персональные задания</h3>
+							<h3 class='tasks-header tasks-header-team'>Командные задания</h3>
+						</div>	
+						<ul class='tasks-list-student task-list'>
+							<li class='no-tasks'><span>Персональные заsдания отсутствуют <i class="fa fa-frown-o" aria-hidden="true"></i></span></li>
+						</ul>
+						<ul class='tasks-list-team task-list'>
+							<li class='no-tasks'><span>Командные задания отсутствуют <i class="fa fa-frown-o" aria-hidden="true"></i></span></li>
+						</ul>
+					</section>
 				</div>
 				<div class="col-md-4">
 					<div class="column-team column">
@@ -241,17 +112,6 @@
 							<button class='header-information-button header-information-button-team'><i class="fa fa-plus"></i></button>
 						</div>
 						<ul class="main-list main-list-team">
-							<!-- <li class='list-item-team list-item'>
-								<div class='main-list-content-team main-list-content'>
-									<span class='small-dscr small-dscr-team'>Джаваскриптеры <img src="http://deployd.com/img/bucket/javascript.png" alt=""></span>
-									<div class='extra-information extra-information-team'>
-										<span class="slogan"><b>Наш слоган:</b> Мы пишем такой код, за который нам не стыдно.</span>
-										<span class="number-of-students-in-team"><b>Состав команды:</b> 0</span>
-										<ul class="line-up-list"></ul>
-										<button class='add-student-button button'>Добавить студентов в команду</button>
-									</div>
-								</div>
-							</li> -->
 						</ul>
 					</div>
 				</div>
@@ -275,7 +135,7 @@
 	<!-- Load Scripts Start -->
 	<script>var scr = {"scripts":[
 		{"src" : "js/libs.js", "async" : false},
-		{"src" : "js/some.js", "async" : false},
+		{"src" : "js/school.js", "async" : false},
 		{"src" : "js/events.js", "async" : false},	
 		{"src" : "js/common.js", "async" : false},			
 		]};!function(t,n,r){"use strict";var c=function(t){if("[object Array]"!==Object.prototype.toString.call(t))return!1;for(var r=0;r<t.length;r++){var c=n.createElement("script"),e=t[r];c.src=e.src,c.async=e.async,n.body.appendChild(c)}return!0};t.addEventListener?t.addEventListener("load",function(){c(r.scripts);},!1):t.attachEvent?t.attachEvent("onload",function(){c(r.scripts)}):t.onload=function(){c(r.scripts)}}(window,document,scr);

@@ -19,6 +19,7 @@ class Team {
 		this.slogan = slogan;
 		this.tasks = [];
 		yandexSchool.allTeams.push(this);
+		this.id = yandexSchool.allTeams.length - 1;
 	}
 	// функция добавления студента в команду
 	addStudents() {
@@ -33,6 +34,8 @@ class Team {
 var yandexSchool = {
 	allStudents: [],
 	allTeams: [],
+	allStudentsTasks: [],
+	allTeamsTasks: [],
 	createStudent: (name, age, skills, photoURL) => {
 		return new Student(name, age, skills, photoURL);
 	},
@@ -43,18 +46,22 @@ var yandexSchool = {
 	createStudentTask: (student, taskText) => {
 		var currentTask = {
 			text: taskText,
-			realPoints: -1
+			realPoints: -1,
+			id: yandexSchool.allStudentsTasks.length,
+			ownerOfTask: student
 		};
-		student.tasks.push(currentTask);
+		yandexSchool.allStudentsTasks.push(currentTask);
 		return currentTask;
 	},
 	// Создание задания для команды
 	createTeamTask: (team, taskText) => {
 		var currentTask = {
 			text: taskText,
-			realPoints: -1
+			realPoints: -1,
+			id: yandexSchool.allTeamsTasks.length,
+			ownerOfTask: team
 		};
-		team.tasks.push(currentTask);
+		yandexSchool.allTeamsTasks.push(currentTask);
 		return currentTask;
 	},
 	// Оценивание заданий
@@ -124,41 +131,10 @@ function distribution (numberOfMentors, numberOfStudents, mOp, sOp) {
 	return res;
 }
 	
-
-	var mOp =  [[3, 4, 8],
-  					 	[4, 5, 2],
-  					 	[5, 6, 4],
-  					 	[9, 3, 3],
-  					 	[8, 7, 6],
-  					 	[6, 9, 5],
-  					 	[2, 2, 7],
-  					 	[7, 1, 1],
-  					 	[1, 8, 9]];
-  // мнение студентов
-	var sOp =  [[3, 1, 2],
-	  					[1, 2, 3],
-							[3, 2, 1],
-							[2, 3, 1],
-							[2, 1, 3],
-							[3, 1, 2],
-							[1, 2, 3],
-							[1, 3, 2],
-							[2, 3, 1]];
-
-	console.log(yandexSchool.distribution(3, 9, mOp, sOp))
+	
 
 	
-	// 	function showArray(arr) {
-	// 		var s = '';
-	// 		for (var i = 0; i < arr.length; i++) {
-	// 			s = '';
-	// 			for (var j = 0; j < arr[i].length; j++) {
-	// 				s += arr[i][j] + ' ';
-	// 			}
-	// 			console.log(s)
-	// 		}
-	// 	}
-
+	
 		
 		
 

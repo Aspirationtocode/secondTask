@@ -6,7 +6,7 @@ function openExtraInformationStudent (e) {
 }
 // открытие дополнительной информации о команде
 function openExtraInformationTeam (e) {
-	if (!$(e.target).hasClass('button')) {
+	if (!$(e.target).hasClass('button') && $(e.target).hasClass('small-dscr-team')) {
 		$(this).find('.extra-information-team').slideToggle(150)
 	}	
 }
@@ -81,6 +81,7 @@ function submitFormTeam (e) {
 								<span class="number-of-students-in-team"><b>Состав команды:</b> <span>${0}</span></span>
 								<ul class="line-up-list"></ul>
 								<button class='add-student-button button'>Добавить студента в команду</button>
+								<button class="button give-task-team">Дать задание</button>
 							</div>
 						</div>
 					</li>`)
@@ -173,3 +174,152 @@ function completeCheckStudents (e) {
 	$(this).remove();
 }
 
+function tabOpen(e) {
+	$('.tasks-header').removeClass('active');
+	$(this).addClass('active');
+	if ($(this).hasClass('tasks-header-student')) {
+		$('.tasks-list-student').slideDown(200);	
+		$('.tasks-list-team').slideUp(200);
+	} else if ($(this).hasClass('tasks-header-team')) {
+		$('.tasks-list-team').slideDown(200);
+		$('.tasks-list-student').slideUp(200);
+	}
+}
+
+function giveTaskToStudent(e) {
+	if ($(this).text() === 'Отмена') {
+		$('.task-form-student').remove();
+		$(this).text('Дать задание');
+	} else {
+		var taskForm = $(`<form class="task-form-student task-form">						
+					<span class='input-dscr'><b>Текст задания:</b></span>
+					<textarea style="width:100%; height:150px;" name="text-task-student" required></textarea>
+					<input type="submit" value='Ок!' class='task-form-submit task-form-submit-student button'>
+				</form>`)
+		if ($(this).parent().find('.task-form-student').length === 0) {
+			$(this).after(taskForm);
+		}
+		$(this).text('Отмена');
+	}
+}
+
+function CompleteGivingTaskToStudent(e) {
+	var studentId = $(this).closest('.list-item-student').data('id');
+	var currentStudent = yandexSchool.allStudents[studentId];
+	var taskText = $('.task-form-student').serializeArray()[0].value;
+	if (taskText === '') return;
+	var li = $(`<li class='tasks-list-item-student tasks-list-item'>
+								<div class="task-dscr">
+									<h3 class="task-header">Текст задания:</h3>
+									<p class='tesk-text'>${taskText}</p>
+									<h3>Оценка за задание: 
+										<span class='rate-stars-student'>
+											<i class="fa fa-star-o"></i>
+											<i class="fa fa-star-o"></i>
+											<i class="fa fa-star-o"></i>
+											<i class="fa fa-star-o"></i>
+											<i class="fa fa-star-o"></i>
+											<i class="fa fa-star-o"></i>
+											<i class="fa fa-star-o"></i>
+											<i class="fa fa-star-o"></i>
+											<i class="fa fa-star-o"></i>
+											<i class="fa fa-star-o"></i>
+										</span>
+									</h3>		
+								</div>
+								<div class="task-performer-student task-performer">
+									<h3>Исполнитель:</h3>
+									<p>Студент ${currentStudent.name}, ${currentStudent.age} лет</p>
+								</div>
+							</li>`);
+	li.data('studentId', studentId);
+	$('.tasks-list-student').find('.no-tasks').remove();
+	$('.tasks-list-student').append(li);
+	var task = yandexSchool.createStudentTask(currentStudent, taskText);
+	li.data('taskId', task.id);
+	$('.task-form-student').remove();
+	$('.give-task-student').text('Дать задание');
+}
+
+function giveTaskToTeam(e) {
+	if ($(this).text() === 'Отмена') {
+		$('.task-form-team').remove();
+		$(this).text('Дать задание');
+	} else {
+		var taskForm = $(`<form class="task-form-team task-form">						
+					<span class='input-dscr'><b>Текст задания:</b></span>
+					<textarea rows="7" cols="45" name="text-task-team" required></textarea>
+					<input type="submit" value='Ок!' class='task-form-submit task-form-submit-team button'>
+				</form>`)
+		if ($(this).parent().find('.task-form-team').length === 0) {
+			$(this).after(taskForm);
+		}
+		$(this).text('Отмена');
+	}
+}
+
+function CompleteGivingTaskToTeam(e) {
+	var teamId = $(this).closest('.list-item-team').data('id');
+	var currentTeam = yandexSchool.allTeams[teamId];
+	var taskText = $('.task-form-team').serializeArray()[0].value;
+	if (taskText === '') return;
+	var li = $(`<li class='tasks-list-item-team tasks-list-item'>
+								<div class="task-dscr">
+									<h3 class="task-header">Текст задания:</h3>
+									<p class='tesk-text'>${taskText}</p>
+									<h3>Оценка за задание: 
+										<span class='rate-stars-student'>
+											<i class="fa fa-star-o"></i>
+											<i class="fa fa-star-o"></i>
+											<i class="fa fa-star-o"></i>
+											<i class="fa fa-star-o"></i>
+											<i class="fa fa-star-o"></i>
+											<i class="fa fa-star-o"></i>
+											<i class="fa fa-star-o"></i>
+											<i class="fa fa-star-o"></i>
+											<i class="fa fa-star-o"></i>
+											<i class="fa fa-star-o"></i>
+										</span>
+									</h3>	
+								</div>
+								<div class="task-performer-team task-performer">
+									<h3>Исполнитель:</h3>
+									<p>Команда ${currentTeam.name}</p>		
+								</div>
+							</li>`);
+	li.data('teamId', teamId);
+	$('.tasks-list-team').find('.no-tasks').remove();
+	$('.tasks-list-team').append(li);
+	var task = yandexSchool.createTeamTask(currentTeam, taskText);
+	li.data('taskId', task.id);
+	$('.task-form-team').remove();
+	$('.give-task-team').text('Дать задание');
+}
+
+function rateStudentTask(e) {
+	var taskId = $(this).closest('li').data('taskId');
+	var studentId = $(this).closest('li').data('studentId');
+	var stars = $(this).parent().find('.fa'); 
+	var index = $(this).index();
+	stars.addClass('fa-star-o');
+	for (var i = 0; i <= index; i++) {
+		stars.eq(i)
+			.removeClass('fa-star-o')
+			.addClass('fa-star')
+	}
+	yandexSchool.rateTask(yandexSchool.allStudentsTasks[taskId], index + 1);
+}
+
+function rateTeamTask(e) {
+	var taskId = $(this).closest('li').data('taskId');
+	var studentId = $(this).closest('li').data('teamId');
+	var stars = $(this).parent().find('.fa'); 
+	var index = $(this).index();
+	stars.addClass('fa-star-o');
+	for (var i = 0; i <= index; i++) {
+		stars.eq(i)
+			.removeClass('fa-star-o')
+			.addClass('fa-star')
+	}
+	yandexSchool.rateTask(yandexSchool.allTeamsTasks[taskId], index + 1);
+}
