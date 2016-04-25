@@ -120,6 +120,66 @@
 
 Исходя из моих расчетов и моего алгоритма, студенты должны верно распределяться среди менторов. Было приведено 2 примера(теста), 
 по которым можно судить о выходных данных работы моей функции distribution. Код частично прокомментирован в самой библиотеке.
+Код функции:
+```javascript
+function distribution (numberOfMentors, numberOfStudents, mOp, sOp) {
+	// функция обнуления ряда
+	var rowToNil = (row, array) => {	
+		for (var i = 0; i < array.length; i++) {
+			for (var j = 0; j < array[i].length; j++) {
+				if (i === row) {
+					array[i][j] = 0;
+				}
+			}
+		}
+	}
+
+	// функция обнуления колонки
+	var colToNil = (col, array) => {
+		array.forEach((item, i, arr) => {
+			item[col] = 0;
+		})
+	}
+	// функции инвертирования очков
+	mentorOpinionRate = (n) => numberOfStudents - n + 1
+	studentOpinionRate = (n) => numberOfMentors - n + 1
+	var res =  [];
+  for (var i = 0; i < numberOfMentors; i++) {
+  	res[i] = [];
+  }
+
+	for (var i = 0; i < numberOfStudents; i++) {
+		for (var j = 0; j < numberOfMentors; j++) {
+			sOp[i][j] = studentOpinionRate(sOp[i][j]);
+			mOp[i][j] = mentorOpinionRate(mOp[i][j]);
+			sOp[i][j] += mOp[i][j];
+		}
+	}
+	
+	var k = 0;
+	while (k < numberOfStudents) {
+		var max = -1;
+		var maxI = -1;
+		var maxJ = -1;
+		for (var i = 0; i < sOp.length; i++) {
+			for (var j = 0; j < sOp[i].length; j++) {
+				if (sOp[i][j] >= max) {
+					max = sOp[i][j];
+					maxI = i;
+					maxJ = j;
+				}
+			}
+		}
+		rowToNil(maxI, sOp)
+		res[maxJ].push(maxI + 1)
+		if (res[maxJ].length === numberOfStudents / numberOfMentors) {
+			colToNil(maxJ, sOp)
+		}
+		k++;
+	}
+	return res;
+}
+```
 
 
 
