@@ -194,7 +194,7 @@ function giveTaskToStudent(e) {
 		var taskForm = $(`<form class="task-form-student task-form">						
 					<span class='input-dscr'><b>Текст задания:</b></span>
 					<textarea style="width:100%; height:150px;" name="text-task-student" required></textarea>
-					<input type="submit" value='Ок!' class='task-form-submit task-form-submit-student button'>
+					<input type="button" value='Ок!' class='task-form-submit task-form-submit-student button'>
 				</form>`)
 		if ($(this).parent().find('.task-form-student').length === 0) {
 			$(this).after(taskForm);
@@ -249,7 +249,7 @@ function giveTaskToTeam(e) {
 		var taskForm = $(`<form class="task-form-team task-form">						
 					<span class='input-dscr'><b>Текст задания:</b></span>
 					<textarea rows="7" cols="45" name="text-task-team" required></textarea>
-					<input type="submit" value='Ок!' class='task-form-submit task-form-submit-team button'>
+					<input type="button" value='Ок!' class='task-form-submit task-form-submit-team button'>
 				</form>`)
 		if ($(this).parent().find('.task-form-team').length === 0) {
 			$(this).after(taskForm);
